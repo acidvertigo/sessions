@@ -59,39 +59,39 @@ func main() {
   		switch string(ctx.Path()) {
   		case "/set":
       		//get the session for this context
-		session := sess.Start(ctx)
+			session := sess.Start(ctx)
 
-		//set session values
-		session.Set("name", "anyName")
+			//set session values
+			session.Set("name", "anyName")
 
-		//test if setted here
-		ctx.SetBodyString("All ok session setted to "+session.GetString("name"))
+			//test if setted here
+			ctx.SetBodyString("All ok session setted to "+session.GetString("name"))
   		case "/get":
-      	//get the session for this context
-		session := sess.Start(ctx)
+      		//get the session for this context
+			session := sess.Start(ctx)
 
-		var name string
+			var name string
 
-		//get the session value
-		if v := session.Get("name"); v != nil {
-			name = v.(string)
-		}
-		// OR just name = session.GetString("name")
+			//get the session value
+			if v := session.Get("name"); v != nil {
+				name = v.(string)
+			}
+			// OR just name = session.GetString("name")
 
-		ctx.SetBodyString("The name on the /set was: "+ name)
+			ctx.SetBodyString("The name on the /set was: "+ name)
   		case "/delete":
-      	//get the session for this context
-		session := sess.Start(ctx)
+      		//get the session for this context
+			session := sess.Start(ctx)
 
-		session.Delete("name")
+			session.Delete("name")
   		case "/clear":
-      	//get the session for this context
-		session := sess.Start(ctx)
-		// removes all entries
-		session.Clear()
+      		//get the session for this context
+			session := sess.Start(ctx)
+			// removes all entries
+			session.Clear()
   		case "/destroy":
-      	//destroy, removes the entire session and cookie
-		sess.Destroy(ctx)
+      		//destroy, removes the entire session and cookie
+			sess.Destroy(ctx)
   		}
 	}
 
@@ -200,7 +200,7 @@ The second step is to add a token to every request. Similar to the way we dealt 
 
 ```go
 h := md5.New()
-salt:="astaxie%^7&8888"
+salt:="secret%^7&8888"
 io.WriteString(h,salt+time.Now().String())
 token:=fmt.Sprintf("%x",h.Sum(nil))
 if r.Form["token"]!=token{
