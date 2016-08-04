@@ -31,6 +31,7 @@ import (
 	"encoding/base64"
 	"errors"
 	"net/url"
+        "log"
 	"sync"
 	"time"
 
