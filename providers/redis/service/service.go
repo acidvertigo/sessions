@@ -30,7 +30,7 @@ package service
 import (
 	"time"
 
-	"gopkg.in/redis.v4"
+	"github.com/go-redis/redis"
 	"errors"
 )
 
