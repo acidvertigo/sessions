@@ -29,6 +29,7 @@ package sessions
 
 import (
 	"encoding/base64"
+	"errors"
 	"net/url"
 	"sync"
 	"time"
