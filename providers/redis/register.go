@@ -30,9 +30,9 @@ package redis
 import (
 	"time"
 
-	"github.com/fasthttp-contrib/sessions"
-	"github.com/fasthttp-contrib/sessions/providers/redis/service"
-	"github.com/fasthttp-contrib/sessions/store"
+	"github.com/acidvertigo/sessions"
+	"github.com/acidvertigo/sessions/providers/redis/service"
+	"github.com/acidvertigo/sessions/store"
 )
 
 func init() {
