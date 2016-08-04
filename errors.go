@@ -27,9 +27,7 @@
 
 package sessions
 
-import (
-	"errors"
-)
+import 	"errors"
 
 var (
 	// ErrProviderNotFound returns an error with message: 'Provider was not found. Please try to _ import one'
