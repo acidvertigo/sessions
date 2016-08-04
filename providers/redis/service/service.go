@@ -31,7 +31,7 @@ import (
 	"time"
 
 	"github.com/garyburd/redigo/redis"
-	"github.com/kataras/iris/errors"
+	"errors"
 )
 
 const (
