@@ -32,7 +32,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/fasthttp-contrib/sessions/store"
+	"github.com/acidvertigo/sessions/store"
 )
 
 // IProvider the type which Provider must implement
