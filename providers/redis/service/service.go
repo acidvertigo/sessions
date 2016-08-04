@@ -30,7 +30,7 @@ package service
 import (
 	"time"
 
-	"menteslibres.net/gosexy/redis"
+	"github.com/garyburd/redigo/redis"
 	"errors"
 )
 
