@@ -109,7 +109,7 @@ func New(providerName string, cookieName string, gcDuration time.Duration) *Mana
 // Register registers a provider
 func Register(provider IProvider) {
 	if provider == nil {
-		panic()
+		panic("no service provider")
 	}
 	providerName := provider.Name()
 
