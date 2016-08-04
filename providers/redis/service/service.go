@@ -30,7 +30,7 @@ package service
 import (
 	"time"
 
-	"github.com/garyburd/redigo/redis"
+	"gopkg.in/redis.v4"
 	"errors"
 )
 
