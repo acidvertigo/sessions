@@ -1,4 +1,4 @@
-This is only a fork of [fasthttp-contrib/sessions](https://github.com/fasthttp-contrib/sessions/) with some modification to make it work on my personal framework
+This is just a fork of [fasthttp-contrib/sessions](https://github.com/fasthttp-contrib/sessions/) with some modification to make it work on my personal framework
 
 # Package information
 
