@@ -78,7 +78,7 @@ func newManager(providerName string, cookieName string, gcDuration time.Duration
 	}
 
 	if cookieName == "" {
-		cookieName = "IrisCookieName"
+		cookieName = "AppCookieName"
 	}
 
 	manager := &Manager{}
