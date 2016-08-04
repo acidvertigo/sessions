@@ -109,13 +109,13 @@ func New(providerName string, cookieName string, gcDuration time.Duration) *Mana
 // Register registers a provider
 func Register(provider IProvider) {
 	if provider == nil {
-		Log.Fatal("unable to determine the session provider")
+		log.Fatal("unable to determine the session provider")
 	}
 	providerName := provider.Name()
 
 	if _, exists := providers[providerName]; exists {
 		if !continueOnError {
-			Log.Fatal(providerName)
+			log.Fatal(providerName)
 		} else {
 			// do nothing it's a map it will overrides the existing provider.
 		}
