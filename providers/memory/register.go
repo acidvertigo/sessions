@@ -30,8 +30,8 @@ package memory
 import (
 	"time"
 
-	"github.com/fasthttp-contrib/sessions"
-	"github.com/fasthttp-contrib/sessions/store"
+	"github.com/acidvertigo/sessions"
+	"github.com/acidvertigo/sessions/store"
 )
 
 func init() {
