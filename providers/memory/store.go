@@ -30,7 +30,7 @@ package memory
 import (
 	"time"
 
-	"github.com/fasthttp-contrib/sessions/store"
+	"github.com/acidvertigo/sessions/store"
 )
 
 // Store the memory store, contains the session id and the values
