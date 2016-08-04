@@ -33,7 +33,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/fasthttp-contrib/sessions/store"
+	"github.com/acidvertigo/sessions/store"
 	"github.com/valyala/fasthttp"
 )
 
@@ -70,7 +70,7 @@ var (
 func newManager(providerName string, cookieName string, gcDuration time.Duration) (*Manager, error) {
 	provider, found := providers[providerName]
 	if !found {
-		return nil, ErrProviderNotFound.Format(providerName)
+		return nil, errors.New(providerName)
 	}
 	if gcDuration < 1 {
 		gcDuration = time.Duration(60) * time.Minute
@@ -108,13 +108,13 @@ func New(providerName string, cookieName string, gcDuration time.Duration) *Mana
 // Register registers a provider
 func Register(provider IProvider) {
 	if provider == nil {
-		ErrProviderRegister.Panic()
+		Log.Fatal("unable to determine the session provider")
 	}
 	providerName := provider.Name()
 
 	if _, exists := providers[providerName]; exists {
 		if !continueOnError {
-			ErrProviderAlreadyExists.Panicf(providerName)
+			Log.Fatal(providerName)
 		} else {
 			// do nothing it's a map it will overrides the existing provider.
 		}
