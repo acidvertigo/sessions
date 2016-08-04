@@ -28,7 +28,7 @@
 package sessions
 
 import (
-	"github.com/kataras/iris/errors"
+	"errors"
 )
 
 var (
