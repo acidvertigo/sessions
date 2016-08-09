@@ -31,7 +31,7 @@ import (
 	"encoding/base64"
 	"errors"
 	"net/url"
-        "log"
+    "log"
 	"sync"
 	"time"
 
@@ -146,6 +146,9 @@ func (m *Manager) Start(requestCtx *fasthttp.RequestCtx) store.IStore {
 		cookie.SetValue(url.QueryEscape(sid))
 		cookie.SetPath("/")
 		cookie.SetHTTPOnly(true)
+		if ctx.IsTls {
+		    cookie.SetDomain(os.Getenv
+		}
 		exp := time.Now().Add(m.gcDuration)
 		cookie.SetExpire(exp)
 		requestCtx.Response.Header.SetCookie(cookie)
@@ -175,6 +178,9 @@ func (m *Manager) Destroy(requestCtx *fasthttp.RequestCtx) {
 	cookie.SetValue("")
 	cookie.SetPath("/")
 	cookie.SetHTTPOnly(true)
+	if requestCtx.IsTLS() {
+	    cookie.SetSecure(true)
+	}
 	exp := time.Now().Add(-time.Duration(1) * time.Minute) //RFC says 1 second, but make sure 1 minute because we are using fasthttp
 	cookie.SetExpire(exp)
 	requestCtx.Response.Header.SetCookie(cookie)
