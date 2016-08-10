@@ -146,9 +146,9 @@ func (m *Manager) Start(requestCtx *fasthttp.RequestCtx) store.IStore {
 		cookie.SetValue(url.QueryEscape(sid))
 		cookie.SetPath("/")
 		cookie.SetHTTPOnly(true)
-		if ctx.IsTls {
-		    cookie.SetSecure(true)
-		}
+		if requestCtx.IsTLS() {
+	            cookie.SetSecure(true)
+	        }
 		exp := time.Now().Add(m.gcDuration)
 		cookie.SetExpire(exp)
 		requestCtx.Response.Header.SetCookie(cookie)
