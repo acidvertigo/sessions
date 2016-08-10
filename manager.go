@@ -147,7 +147,7 @@ func (m *Manager) Start(requestCtx *fasthttp.RequestCtx) store.IStore {
 		cookie.SetPath("/")
 		cookie.SetHTTPOnly(true)
 		if ctx.IsTls {
-		    cookie.SetDomain(os.Getenv
+		    cookie.SetSecure(true)
 		}
 		exp := time.Now().Add(m.gcDuration)
 		cookie.SetExpire(exp)
