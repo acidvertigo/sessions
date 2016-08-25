@@ -99,7 +99,7 @@ func (r *Service) CloseConnection() error {
 	if r.pool != nil {
 		return r.pool.Close()
 	}
-	return ErrRedisClosed.Return()
+	return ErrRedisClosed
 }
 
 // Set sets to the redis
@@ -136,7 +136,7 @@ func (r *Service) Get(key string) (interface{}, error) {
 		return nil, err
 	}
 	if redisVal == nil {
-		return nil, ErrKeyNotFound.Format(key)
+		return nil, ErrKeyNotFound
 	}
 	return redisVal, nil
 }
@@ -157,7 +157,7 @@ func (r *Service) GetBytes(key string) ([]byte, error) {
 		return nil, err
 	}
 	if redisVal == nil {
-		return nil, ErrKeyNotFound.Format(key)
+		return nil, ErrKeyNotFound
 	}
 
 	return redis.Bytes(redisVal, err)
@@ -169,7 +169,7 @@ func (r *Service) GetBytes(key string) ([]byte, error) {
 func (r *Service) GetString(key string) (string, error) {
 	redisVal, err := r.Get(key)
 	if redisVal == nil {
-		return "", ErrKeyNotFound.Format(key)
+		return "", ErrKeyNotFound
 	}
 
 	sVal, err := redis.String(redisVal, err)
@@ -185,7 +185,7 @@ func (r *Service) GetString(key string) (string, error) {
 func (r *Service) GetInt(key string) (int, error) {
 	redisVal, err := r.Get(key)
 	if redisVal == nil {
-		return -1, ErrKeyNotFound.Format(key)
+		return -1, ErrKeyNotFound
 	}
 
 	intVal, err := redis.Int(redisVal, err)
@@ -200,7 +200,7 @@ func (r *Service) GetInt(key string) (int, error) {
 func (r *Service) GetStringMap(key string) (map[string]string, error) {
 	redisVal, err := r.Get(key)
 	if redisVal == nil {
-		return nil, ErrKeyNotFound.Format(key)
+		return nil, ErrKeyNotFound
 	}
 
 	_map, err := redis.StringMap(redisVal, err)
@@ -225,7 +225,7 @@ func (r *Service) GetAll(key string) (map[string]string, error) {
 		return nil, err
 	}
 	if reply == nil {
-		return nil, ErrKeyNotFound.Format(key)
+		return nil, ErrKeyNotFound
 	}
 
 	return redis.StringMap(reply, err)
@@ -246,7 +246,7 @@ func (r *Service) GetAllKeysByPrefix(prefix string) ([]string, error) {
 		return nil, err
 	}
 	if reply == nil {
-		return nil, ErrKeyNotFound.Format(prefix)
+		return nil, ErrKeyNotFound
 	}
 	return redis.Strings(reply, err)
 
